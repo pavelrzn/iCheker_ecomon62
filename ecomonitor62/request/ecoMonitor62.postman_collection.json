@@ -1,0 +1,501 @@
+{
+	"info": {
+		"_postman_id": "106b2d4e-beb9-41fc-9dcb-df2eed592bc3",
+		"name": "ecoMonitor62",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get comments (all)",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=UTF-8",
+						"type": "text"
+					},
+					{
+						"key": "Host",
+						"value": "ecomonitor62.ru",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://ecomonitor62.ru/admin/social",
+						"type": "text"
+					},
+					{
+						"key": "User-Agent",
+						"value": "+7-966-344-66-44",
+						"type": "text"
+					},
+					{
+						"key": "Cookie",
+						"value": "auth.strategy=local; _ym_d=1603913741; _ym_uid=1603913741784669059; auth._refresh_token.local=false; _ym_isad=2; auth._token.local=Bearer%20eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDUzNTEzOTEsImV4cCI6MTYwNzk3OTM5MSwic3ViIjoiUGF2ZWxyem4ifQ.oIFslLpoMQMkJkRDFPVCC5BfXVPjynGqPAhCDA0_sig; _ym_visorc_65881390=w",
+						"type": "text"
+					},
+					{
+						"key": "Sec-Fetch-Dest",
+						"value": "empty",
+						"type": "text"
+					},
+					{
+						"key": "Sec-Fetch-Mode",
+						"value": "cors",
+						"type": "text"
+					},
+					{
+						"key": "Sec-Fetch-Site",
+						"value": "same-origin",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"page\": 0,\r\n    \"size\": 25\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ecomonitor62.ru/api/comments/list",
+					"protocol": "https",
+					"host": [
+						"ecomonitor62",
+						"ru"
+					],
+					"path": [
+						"api",
+						"comments",
+						"list"
+					]
+				},
+				"description": "comments list"
+			},
+			"response": []
+		},
+		{
+			"name": "get comments (last - on the map)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"page\": 0,\r\n    \"size\": 35\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ecomonitor62.ru/api/comments/list_last",
+					"protocol": "https",
+					"host": [
+						"ecomonitor62",
+						"ru"
+					],
+					"path": [
+						"api",
+						"comments",
+						"list_last"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "set a comment",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=UTF-8",
+						"type": "text"
+					},
+					{
+						"key": "Host",
+						"value": "ecomonitor62.ru",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://ecomonitor62.ru/admin/social",
+						"type": "text"
+					},
+					{
+						"key": "User-Agent",
+						"value": "+7-966-344-66-44",
+						"type": "text"
+					},
+					{
+						"key": "Cookie",
+						"value": "auth.strategy=local; _ym_d=1603913741; _ym_uid=1603913741784669059; auth._refresh_token.local=false; _ym_isad=2; auth._token.local=Bearer%20eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDUzNTEzOTEsImV4cCI6MTYwNzk3OTM5MSwic3ViIjoiUGF2ZWxyem4ifQ.oIFslLpoMQMkJkRDFPVCC5BfXVPjynGqPAhCDA0_sig; _ym_visorc_65881390=w",
+						"type": "text"
+					},
+					{
+						"key": "Sec-Fetch-Dest",
+						"value": "empty",
+						"type": "text"
+					},
+					{
+						"key": "Sec-Fetch-Mode",
+						"value": "cors",
+						"type": "text"
+					},
+					{
+						"key": "Sec-Fetch-Site",
+						"value": "same-origin",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDUzNTEzOTEsImV4cCI6MTYwNzk3OTM5MSwic3ViIjoiUGF2ZWxyem4ifQ.oIFslLpoMQMkJkRDFPVCC5BfXVPjynGqPAhCDA0_sig",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"latitude\": 54.00565131980879,\r\n    \"longitude\": 39.31643165182693,\r\n    \"text\": \"<div>Дым</div>\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ecomonitor62.ru/api/comments",
+					"protocol": "https",
+					"host": [
+						"ecomonitor62",
+						"ru"
+					],
+					"path": [
+						"api",
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get weather",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://ecomonitor62.ru/api/summary/get_weather",
+					"protocol": "https",
+					"host": [
+						"ecomonitor62",
+						"ru"
+					],
+					"path": [
+						"api",
+						"summary",
+						"get_weather"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get summary",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://ecomonitor62.ru/api/summary",
+					"protocol": "https",
+					"host": [
+						"ecomonitor62",
+						"ru"
+					],
+					"path": [
+						"api",
+						"summary"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get Cameras",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://ecomonitor62.ru/api/cameras/list",
+					"protocol": "https",
+					"host": [
+						"ecomonitor62",
+						"ru"
+					],
+					"path": [
+						"api",
+						"cameras",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get contact phones",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://ecomonitor62.ru/api/content/tel",
+					"protocol": "https",
+					"host": [
+						"ecomonitor62",
+						"ru"
+					],
+					"path": [
+						"api",
+						"content",
+						"tel"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "change pass (admin panel)",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDUzNTEzOTEsImV4cCI6MTYwNzk3OTM5MSwic3ViIjoiUGF2ZWxyem4ifQ.oIFslLpoMQMkJkRDFPVCC5BfXVPjynGqPAhCDA0_sig",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=UTF-8",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Host",
+						"value": "ecomonitor62.ru",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Referer",
+						"value": "https://ecomonitor62.ru/admin/social",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "User-Agent",
+						"value": "+7-966-344-66-44",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Cookie",
+						"value": "auth.strategy=local; _ym_d=1603913741; _ym_uid=1603913741784669059; auth._refresh_token.local=false; _ym_isad=2; auth._token.local=Bearer%20eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDUzNTEzOTEsImV4cCI6MTYwNzk3OTM5MSwic3ViIjoiUGF2ZWxyem4ifQ.oIFslLpoMQMkJkRDFPVCC5BfXVPjynGqPAhCDA0_sig; _ym_visorc_65881390=w",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Sec-Fetch-Dest",
+						"value": "empty",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Sec-Fetch-Mode",
+						"value": "cors",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Sec-Fetch-Site",
+						"value": "same-origin",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://ecomonitor62.ru/api/users/2576/password?password=123123-+",
+					"protocol": "https",
+					"host": [
+						"ecomonitor62",
+						"ru"
+					],
+					"path": [
+						"api",
+						"users",
+						"2576",
+						"password"
+					],
+					"query": [
+						{
+							"key": "password",
+							"value": "123123-+"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "change pass (userl)",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDcyODkzNjUsImV4cCI6MTYwOTkxNzM2NSwic3ViIjoicnpuNjJyem4ifQ.7cb4YC7-Ie-_aG1SwLJlKC6L_5OVAqOMAcRf0jdQxWw",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=UTF-8",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Host",
+						"value": "ecomonitor62.ru",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Referer",
+						"value": "https://ecomonitor62.ru/admin/social",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "User-Agent",
+						"value": "+7-966-344-66-44",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Cookie",
+						"value": "auth.strategy=local; _ym_d=1603913741; _ym_uid=1603913741784669059; auth._refresh_token.local=false; _ym_isad=2; auth._token.local=Bearer%20eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDUzNTEzOTEsImV4cCI6MTYwNzk3OTM5MSwic3ViIjoiUGF2ZWxyem4ifQ.oIFslLpoMQMkJkRDFPVCC5BfXVPjynGqPAhCDA0_sig; _ym_visorc_65881390=w",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Sec-Fetch-Dest",
+						"value": "empty",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Sec-Fetch-Mode",
+						"value": "cors",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Sec-Fetch-Site",
+						"value": "same-origin",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"oldPassword\": \"123123-+\",\r\n    \"newPassword\": \"678678-=\",\r\n    \"newPasswordConfirm\": \"678678-=\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ecomonitor62.ru/api/users/own_password?oldPassword=123123-+&newPassword=678678-=&newPasswordConfirm=678678-=",
+					"protocol": "https",
+					"host": [
+						"ecomonitor62",
+						"ru"
+					],
+					"path": [
+						"api",
+						"users",
+						"own_password"
+					],
+					"query": [
+						{
+							"key": "oldPassword",
+							"value": "123123-+"
+						},
+						{
+							"key": "newPassword",
+							"value": "678678-="
+						},
+						{
+							"key": "newPasswordConfirm",
+							"value": "678678-="
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
