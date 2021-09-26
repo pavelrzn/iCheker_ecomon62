@@ -7,15 +7,14 @@ public class DBase {
     private Connection connection;
     private PreparedStatement pStatement;
 
-    private String dbDriver = "jdbc:sqlite:";
-    private String user = "pv";
-    private String pass = "pv";
+    private String jdbcURL = "jdbc:postgresql://80.78.247.249:5432/ecomonitor";
 
 
-    public void write(long commentId, long commentTime, String commentText, long userId, String userFIO, double latitude, double longitude) throws SQLException {
+    public void addBatch(String table, long commentId, long commentTime, String commentText, long userId, String userFIO, double latitude, double longitude) throws SQLException {
         try {
-            String query = "INSERT INTO ecoMonitor62 (comment_id, comment_time,  comment_text, user_id, user_FIO, latitude, longitude) VALUES(?, ?, ?, ?, ?, ?, ?)";
-            pStatement = connection.prepareStatement(query);
+            String query = "INSERT INTO ecomonitor62." + table + " (comment_id, comment_time,  comment_text, user_id, user_FIO, latitude, longitude) VALUES(?, ?, ?, ?, ?, ?, ?)";
+            if (pStatement == null)
+                pStatement = connection.prepareStatement(query);
             pStatement.setLong(1, commentId);
             pStatement.setLong(2, commentTime);
             pStatement.setString(3, commentText);
@@ -24,7 +23,7 @@ public class DBase {
             pStatement.setDouble(6, latitude);
             pStatement.setDouble(7, longitude);
 
-            pStatement.executeUpdate();
+            pStatement.addBatch();
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -33,16 +32,15 @@ public class DBase {
     }
 
 
-    public void createTable(String path, String dbFileName) {
+    public void createTable(String table, String user, String pass) {
         Statement statement ;
-        String url = dbDriver + path + dbFileName;
 
         try {
-            connect(url);
-            statement = connection.createStatement();
+            connect(jdbcURL, user, pass);
+            statement = this.connection.createStatement();
 
-            String tableQuery = "CREATE TABLE IF NOT EXISTS ecoMonitor62" +
-                    " (comment_id INTEGER PRIMARY KEY, comment_time TIMESTAMP, comment_text TEXT, user_id INTEGER, user_FIO TEXT, latitude INTEGER, longitude INTEGER)";
+            String tableQuery = "CREATE TABLE IF NOT EXISTS ecomonitor62." + table +
+                    " (comment_id INTEGER PRIMARY KEY, comment_time int8, comment_text TEXT, user_id INTEGER, user_FIO TEXT, latitude INTEGER, longitude INTEGER)";
 
             int result = statement.executeUpdate(tableQuery);
             System.out.println("result of updateTable = " + result);
@@ -53,7 +51,7 @@ public class DBase {
         }
     }
 
-    private void connect(String url) {
+    private void connect(String url, String user, String pass) {
         try {
             connection = DriverManager.getConnection(url, user, pass);
             connection.setAutoCommit(false);
@@ -67,13 +65,7 @@ public class DBase {
         System.out.println("trying to close");
         if (pStatement != null) {
             try {
-                pStatement.close();
-            } catch (SQLException throwable) {
-                throwable.printStackTrace();
-            }
-        }
-        if (connection != null) {
-            try {
+                pStatement.executeBatch();
                 connection.commit();
                 connection.close();
             } catch (SQLException throwable) {

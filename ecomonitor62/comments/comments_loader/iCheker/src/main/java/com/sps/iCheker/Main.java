@@ -79,8 +79,7 @@ public class Main {
 
 
     public static void main(String[] args) {
-        if (args.length > 1) sourcePath = args[1];
-        else sourcePath = "C:\\data\\";
+        sourcePath = args[1];
 
         Main main = new Main();
         LoadTimer loadTimer = new LoadTimer(main);
@@ -95,7 +94,7 @@ public class Main {
         consumer = new Consumer(props);
         boolean isCommentLoaded = false;
 
-        dBase.createTable(sourcePath, "comments.sqlite");
+        dBase.createTable(props.getProperty("jdbc.table"), props.getProperty("jdbc.user"), props.getProperty("jdbc.pass"));
         for (int pageNum=0; !isCommentLoaded; pageNum++) {
             String strJson = getComments(client, pageNum).body().string();
             CommentsPack commentsPack = (new ObjectMapper().readValue(strJson, CommentsPack.class));
@@ -114,7 +113,7 @@ public class Main {
                         double latitude = commentsPack.getLatitude(id);
                         double longitude = commentsPack.getLongitude(id);
 
-                        dBase.write(commentId,
+                        dBase.addBatch(props.getProperty("jdbc.table"), commentId,
                                 time, text,
                                 userId, userFIO,
                                 latitude, longitude);
@@ -152,6 +151,7 @@ public class Main {
 
             lastLoadedCommentId = Long.parseLong((String) props.getOrDefault("lastLoadedCommentId", "30"));
             loadCount = Integer.parseInt((String) props.getOrDefault("loadCount", "1000"));
+
 
             System.out.println("last loaded comment: " + lastLoadedCommentId + " | load count: " + loadCount);
 
