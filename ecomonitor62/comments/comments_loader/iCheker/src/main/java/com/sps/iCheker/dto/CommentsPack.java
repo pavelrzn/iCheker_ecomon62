@@ -1,4 +1,4 @@
-package com.sps.iCheker.model;
+package com.sps.iCheker.dto;
 
 import java.util.HashMap;
 import java.util.Map;

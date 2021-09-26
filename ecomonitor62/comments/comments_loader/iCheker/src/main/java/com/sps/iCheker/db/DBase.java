@@ -7,13 +7,12 @@ public class DBase {
     private Connection connection;
     private PreparedStatement pStatement;
 
-    private String url = "jdbc:sqlite:C:/data/comments.sqlite";
+    private String dbDriver = "jdbc:sqlite:";
     private String user = "pv";
     private String pass = "pv";
 
 
     public void write(long commentId, long commentTime, String commentText, long userId, String userFIO, double latitude, double longitude) throws SQLException {
-        connection.setAutoCommit(false);
         try {
             String query = "INSERT INTO ecoMonitor62 (comment_id, comment_time,  comment_text, user_id, user_FIO, latitude, longitude) VALUES(?, ?, ?, ?, ?, ?, ?)";
             pStatement = connection.prepareStatement(query);
@@ -28,16 +27,18 @@ public class DBase {
             pStatement.executeUpdate();
 
         } catch (SQLException throwables) {
+            throwables.printStackTrace();
             throw throwables;
         }
     }
 
 
-    public void createTable() {
-        Statement statement = null;
+    public void createTable(String path, String dbFileName) {
+        Statement statement ;
+        String url = dbDriver + path + dbFileName;
 
         try {
-            connection = DriverManager.getConnection(url, user, pass);
+            connect(url);
             statement = connection.createStatement();
 
             String tableQuery = "CREATE TABLE IF NOT EXISTS ecoMonitor62" +
@@ -52,9 +53,10 @@ public class DBase {
         }
     }
 
-    public void connect() {
+    private void connect(String url) {
         try {
             connection = DriverManager.getConnection(url, user, pass);
+            connection.setAutoCommit(false);
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
