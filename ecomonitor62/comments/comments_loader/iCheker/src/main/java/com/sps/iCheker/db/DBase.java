@@ -40,7 +40,7 @@ public class DBase {
             statement = this.connection.createStatement();
 
             String tableQuery = "CREATE TABLE IF NOT EXISTS ecomonitor62." + table +
-                    " (comment_id INTEGER PRIMARY KEY, comment_time int8, comment_text TEXT, user_id INTEGER, user_FIO TEXT, latitude INTEGER, longitude INTEGER)";
+                    " (comment_id INTEGER PRIMARY KEY, comment_time int8, comment_text TEXT, user_id INTEGER, user_FIO TEXT, latitude double precision, longitude double precision)";
 
             int result = statement.executeUpdate(tableQuery);
             System.out.println("result of updateTable = " + result);
